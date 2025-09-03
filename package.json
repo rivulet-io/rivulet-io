@@ -11,5 +11,8 @@
 	"scripts": {
 		"serve": "node server.js",
 		"build-all": "node build.js"
+	},
+	"dependencies": {
+		"@esbuild/win32-arm64": "^0.25.9"
 	}
 }
