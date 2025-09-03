@@ -90,7 +90,6 @@ const slidesListHtml = parsedProjects.map(({ project, date, name, dateStr }) => 
                     <a href="./articles/${project}/index.html" target="_blank">
                         ${thumbnailHtml}
                         <h3>${formattedDate} ${displayName}</h3>
-                        <p>슬라이드</p>
                     </a>
                 </li>`;
 }).join('\n');
