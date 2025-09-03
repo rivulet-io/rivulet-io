@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
             prevBtn.style.margin = '0 0.5rem';
             prevBtn.style.padding = '0.5rem 1rem';
             prevBtn.style.border = 'none';
-            prevBtn.style.background = 'rgba(255, 255, 255, 0.8)';
+            prevBtn.style.background = 'rgba(45, 55, 72, 0.8)';
+            prevBtn.style.color = '#e2e8f0';
             prevBtn.style.borderRadius = '5px';
             prevBtn.style.cursor = 'pointer';
             pagination.appendChild(prevBtn);
@@ -58,10 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
             pageBtn.style.borderRadius = '5px';
             pageBtn.style.cursor = 'pointer';
             if (i === page) {
-                pageBtn.style.background = 'rgba(255, 255, 255, 0.8)';
+                pageBtn.style.background = 'rgba(26, 32, 44, 0.9)';
+                pageBtn.style.color = '#cbd5e0';
                 pageBtn.style.fontWeight = 'bold';
             } else {
-                pageBtn.style.background = 'rgba(255, 255, 255, 0.5)';
+                pageBtn.style.background = 'rgba(45, 55, 72, 0.8)';
+            pageBtn.style.color = '#e2e8f0';
             }
             pagination.appendChild(pageBtn);
         }
@@ -74,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
             nextBtn.style.margin = '0 0.5rem';
             nextBtn.style.padding = '0.5rem 1rem';
             nextBtn.style.border = 'none';
-            nextBtn.style.background = 'rgba(255, 255, 255, 0.8)';
+            nextBtn.style.background = 'rgba(45, 55, 72, 0.8)';
+            nextBtn.style.color = '#e2e8f0';
             nextBtn.style.borderRadius = '5px';
             nextBtn.style.cursor = 'pointer';
             pagination.appendChild(nextBtn);
