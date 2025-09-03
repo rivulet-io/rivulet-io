@@ -25,8 +25,14 @@ projects.forEach(project => {
   if (!fs.existsSync(outputDir)) {
     console.log(`Building ${project}...`);
     try {
-      // 프로젝트 폴더로 이동해서 빌드
-      execSync('pnpm build', { cwd: projectDir, stdio: 'inherit' });
+      // slidev.config.js 생성
+      const configPath = path.join(projectDir, 'slidev.config.js');
+      const configContent = `export default {\n  base: '/articles/${project}/'\n}`;
+      fs.writeFileSync(configPath, configContent);
+
+      // 프로젝트 폴더로 이동해서 빌드 (base 옵션으로)
+      execSync(`pnpm build --base /articles/${project}/`, { cwd: projectDir, stdio: 'inherit' });
+
       // dist를 static/articles/{project}로 복사
       if (fs.existsSync(distDir)) {
         fs.copySync(distDir, outputDir);
