@@ -1,83 +1,112 @@
-/* Rivulet Blog Styles */
+/* Rivulet Blog Styles - Modern Design */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #333;
+    min-height: 100vh;
 }
 
 header {
-    background-color: #333;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: #fff;
-    padding: 1rem;
+    padding: 2rem 1rem;
     text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
 main {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
 #slides-list h2 {
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
+    color: #fff;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
 }
 
 li {
-    background-color: #fff;
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 li a {
     text-decoration: none;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: block;
+    padding: 1.5rem;
 }
 
 .thumbnail {
     width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 5px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
     margin-bottom: 1rem;
 }
 
 li h3 {
     margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a5568;
 }
 
 li p {
     margin: 0;
+    color: #718096;
+    font-size: 1rem;
 }
 
 footer {
     text-align: center;
-    padding: 1rem;
-    background-color: #333;
+    padding: 2rem 1rem;
+    background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 footer p {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
 }
 
 .github-link {
@@ -85,7 +114,9 @@ footer p {
     align-items: center;
     color: #fff;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .github-link:hover {
@@ -94,4 +125,30 @@ footer p {
 
 .github-link svg {
     margin-right: 0.5rem;
+    width: 28px;
+    height: 28px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    #slides-list h2 {
+        font-size: 2rem;
+    }
+    
+    ul {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    li {
+        border-radius: 10px;
+    }
+    
+    .thumbnail {
+        height: 150px;
+    }
 }
