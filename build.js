@@ -4,6 +4,7 @@ const { execSync } = require('child_process');
 
 const articlesDir = path.join(__dirname, 'articles');
 const staticArticlesDir = path.join(__dirname, 'static', 'articles');
+const indexHtmlPath = path.join(__dirname, 'static', 'index.html');
 
 // static/articles 폴더가 없으면 생성
 if (!fs.existsSync(staticArticlesDir)) {
@@ -16,7 +17,30 @@ const projects = fs.readdirSync(articlesDir).filter(item => {
   return fs.statSync(itemPath).isDirectory();
 });
 
-projects.forEach(project => {
+// 프로젝트 파싱 및 정렬
+const parsedProjects = projects.map(project => {
+  const parts = project.split('_');
+  if (parts.length >= 2) {
+    const dateStr = parts[0];
+    const name = parts.slice(1).join('_');
+    const year = dateStr.substring(0, 4);
+    const month = dateStr.substring(4, 6);
+    const day = dateStr.substring(6, 8);
+    const date = new Date(`${year}-${month}-${day}`);
+    return { project, date, name, dateStr };
+  }
+  return null;
+}).filter(p => p !== null);
+
+// 날짜 내림차순, 날짜 같으면 이름 알파벳 순 정렬
+parsedProjects.sort((a, b) => {
+  if (a.date.getTime() !== b.date.getTime()) {
+    return b.date - a.date; // 최신이 위로
+  }
+  return a.name.localeCompare(b.name);
+});
+
+parsedProjects.forEach(({ project, date, name, dateStr }) => {
   const projectDir = path.join(articlesDir, project);
   const outputDir = path.join(staticArticlesDir, project);
   const distDir = path.join(projectDir, 'dist');
@@ -47,5 +71,25 @@ projects.forEach(project => {
     console.log(`${project} already exists in static/articles`);
   }
 });
+
+// 슬라이드 목록 HTML 생성
+const slidesListHtml = parsedProjects.map(({ project, date, name, dateStr }) => {
+  const year = dateStr.substring(0, 4);
+  const month = dateStr.substring(4, 6);
+  const day = dateStr.substring(6, 8);
+  const formattedDate = `${year}-${month}-${day}`;
+  const displayName = name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // 이름 포맷팅
+  return `      <li>
+                    <a href="./articles/${project}/index.html" target="_blank">
+                        <h3>${formattedDate} ${displayName}</h3>
+                        <p>슬라이드</p>
+                    </a>
+                </li>`;
+}).join('\n');
+
+// index.html 업데이트
+let indexContent = fs.readFileSync(indexHtmlPath, 'utf-8');
+indexContent = indexContent.replace('<!-- SLIDES_LIST -->', slidesListHtml);
+fs.writeFileSync(indexHtmlPath, indexContent);
 
 console.log('Build process completed.');
