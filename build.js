@@ -86,10 +86,26 @@ const slidesListHtml = parsedProjects.map(({ project, date, name, dateStr }) => 
     ? `<img src="${thumbnailPath}" alt="${displayName} 썸네일" class="thumbnail">` 
     : '';
 
+  // 간단한 설명 생성 (프로젝트 이름 기반)
+  const getDescription = (name) => {
+    const descriptions = {
+      'hub': 'Central integration patterns and microservices orchestration',
+      'tower': 'Advanced architectural patterns and system design principles',
+      'bridge': 'Connection strategies and distributed system communication',
+      'flow': 'Data streaming and real-time processing architectures',
+      'core': 'Fundamental concepts and essential development practices',
+      'edge': 'Edge computing and distributed processing techniques'
+    };
+    return descriptions[name.toLowerCase()] || 'Insights and technical deep-dive into modern development practices';
+  };
+
   return `                <li>
                     <a href="./articles/${project}/index.html" target="_blank">
                         ${thumbnailHtml}
-                        <h3>${formattedDate} ${displayName}</h3>
+                        <div class="content-area">
+                            <h3>${formattedDate} ${displayName}</h3>
+                            <p>${getDescription(name)}</p>
+                        </div>
                     </a>
                 </li>`;
 }).join('\n');
