@@ -1,11 +1,11 @@
 ---
 theme: seriph
-title: Introducing Hub from Rivulet
+title: Introducing The Hub
 seoMeta:
   ogImage: auto
 ---
 
-# Introducing Hub from Rivulet
+# Introducing The Hub
 
 Hub is a message broker embedded in Go language apps based on NATS (https://nats.io/).
 
