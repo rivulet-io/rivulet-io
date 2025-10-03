@@ -429,12 +429,6 @@ class: text-center
 
 </div>
 
-<div class="mt-8">
-  <a href="https://github.com/team-aica/passbox" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-    📚 View Documentation & Source Code
-  </a>
-</div>
-
 ---
 layout: end
 class: text-center
@@ -464,13 +458,6 @@ class: text-center
   <p class="text-sm mt-2">Enterprise-grade solution</p>
 </div>
 
-</div>
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://github.com/team-aica/passbox" target="_blank" alt="GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
 </div>
 
 **PassBox** - *Post-Quantum Secure Password Manager*
